@@ -1,15 +1,17 @@
-import 'package:data_store_example/constants.dart';
 // import 'package:data_store_example/pages/gradient_appbar.dart';
 // import 'package:data_store_example/pages/regular_appbar.dart';
-import 'package:data_store_example/pages/sliver_background.dart';
-import 'package:data_store_example/pages/sliver_page.dart';
+// import 'package:data_store_example/pages/sliver_background.dart';
 // import 'package:data_store_example/pages/stack_positioned.dart';
+// import 'package:google_fonts/google_fonts.dart';
+// import 'package:data_store_example/pages/sliver_home.dart';
+import 'package:data_store_example/constants.dart';
+import 'package:data_store_example/pages/show_model_page.dart';
+import 'package:data_store_example/pages/sliver_page.dart';
 import 'package:data_store_example/providers/settings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:provider/provider.dart';
-// import 'package:google_fonts/google_fonts.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -41,14 +43,14 @@ class MyApp extends StatelessWidget {
           return MaterialApp(
             title: 'Flutter Test Apps',
             debugShowCheckedModeBanner: false,
-            theme: ThemeData(fontFamily: 'SourceSans').copyWith(),
+            theme: ThemeData(fontFamily: 'Nunito').copyWith(),
             darkTheme:
                 ThemeData(fontFamily: 'Nunito', brightness: Brightness.dark),
             themeMode: context.watch<SettingsProvider>().state.isDarkMode
                 ? ThemeMode.dark
                 : ThemeMode.light,
             scrollBehavior: const ConstantScrollBehavior(),
-            home: const SliverBackgroundPage(),
+            home: const ShowBottomPage(),
           );
         },
       ),

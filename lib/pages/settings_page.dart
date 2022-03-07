@@ -31,22 +31,150 @@ class _SettingsPageState extends State<SettingsPage> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            ListView.separated(
-              primary: false,
-              shrinkWrap: true,
-              itemCount: 14,
-              separatorBuilder: (context, index) => const Divider(height: 2.0),
-              itemBuilder: ((context, index) {
-                return SwitchListTile(
-                  activeColor: Colors.indigo.shade400,
-                  title: const Text('Show animator'),
-                  subtitle:
-                      const Text('Animated line scrolling in the scan area'),
-                  value: _settings,
-                  onChanged: (value) => setState(() {
-                    _settings = value;
-                  }),
-                );
+            // ListView.separated(
+            //   shrinkWrap: true,
+            //   itemCount: 14,
+            //   separatorBuilder: (context, index) => const Divider(height: 2.0),
+            //   itemBuilder: ((context, index) {
+            //     return SwitchListTile(
+            //       activeColor: Colors.indigo.shade400,
+            //       title: const Text('Show animator'),
+            //       subtitle:
+            //           const Text('Animated line scrolling in the scan area'),
+            //       value: _settings,
+            //       onChanged: (value) => setState(() {
+            //         _settings = value;
+            //       }),
+            //     );
+            //   }),
+            // ),
+            SwitchListTile(
+              activeColor: Colors.indigo.shade400,
+              title: const Text('Show animator'),
+              subtitle: const Text('Animated line scrolling in the scan area'),
+              value: _settings,
+              onChanged: (value) => setState(() {
+                _settings = value;
+              }),
+            ),
+            const Divider(height: 2.0),
+            SwitchListTile(
+              activeColor: Colors.indigo.shade400,
+              title: const Text('Show animator'),
+              subtitle: const Text('Animated line scrolling in the scan area'),
+              value: _settings,
+              onChanged: (value) => setState(() {
+                _settings = value;
+              }),
+            ),
+            const Divider(height: 2.0),
+            SwitchListTile(
+              activeColor: Colors.indigo.shade400,
+              title: const Text('Show animator'),
+              subtitle: const Text('Animated line scrolling in the scan area'),
+              value: _settings,
+              onChanged: (value) => setState(() {
+                _settings = value;
+              }),
+            ),
+            const Divider(height: 2.0),
+            SwitchListTile(
+              activeColor: Colors.indigo.shade400,
+              title: const Text('Show animator'),
+              subtitle: const Text('Animated line scrolling in the scan area'),
+              value: _settings,
+              onChanged: (value) => setState(() {
+                _settings = value;
+              }),
+            ),
+            const Divider(height: 2.0),
+            SwitchListTile(
+              activeColor: Colors.indigo.shade400,
+              title: const Text('Show animator'),
+              subtitle: const Text('Animated line scrolling in the scan area'),
+              value: _settings,
+              onChanged: (value) => setState(() {
+                _settings = value;
+              }),
+            ),
+            const Divider(height: 2.0),
+            SwitchListTile(
+              activeColor: Colors.indigo.shade400,
+              title: const Text('Show animator'),
+              subtitle: const Text('Animated line scrolling in the scan area'),
+              value: _settings,
+              onChanged: (value) => setState(() {
+                _settings = value;
+              }),
+            ),
+            const Divider(height: 2.0),
+            SwitchListTile(
+              activeColor: Colors.indigo.shade400,
+              title: const Text('Show animator'),
+              subtitle: const Text('Animated line scrolling in the scan area'),
+              value: _settings,
+              onChanged: (value) => setState(() {
+                _settings = value;
+              }),
+            ),
+            const Divider(height: 2.0),
+            SwitchListTile(
+              activeColor: Colors.indigo.shade400,
+              title: const Text('Show animator'),
+              subtitle: const Text('Animated line scrolling in the scan area'),
+              value: _settings,
+              onChanged: (value) => setState(() {
+                _settings = value;
+              }),
+            ),
+            const Divider(height: 2.0),
+            SwitchListTile(
+              activeColor: Colors.indigo.shade400,
+              title: const Text('Show animator'),
+              subtitle: const Text('Animated line scrolling in the scan area'),
+              value: _settings,
+              onChanged: (value) => setState(() {
+                _settings = value;
+              }),
+            ),
+            const Divider(height: 2.0),
+            SwitchListTile(
+              activeColor: Colors.indigo.shade400,
+              title: const Text('Show animator'),
+              subtitle: const Text('Animated line scrolling in the scan area'),
+              value: _settings,
+              onChanged: (value) => setState(() {
+                _settings = value;
+              }),
+            ),
+            const Divider(height: 2.0),
+            SwitchListTile(
+              activeColor: Colors.indigo.shade400,
+              title: const Text('Show animator'),
+              subtitle: const Text('Animated line scrolling in the scan area'),
+              value: _settings,
+              onChanged: (value) => setState(() {
+                _settings = value;
+              }),
+            ),
+            const Divider(height: 2.0),
+            SwitchListTile(
+              activeColor: Colors.indigo.shade400,
+              title: const Text('Show animator'),
+              subtitle: const Text('Animated line scrolling in the scan area'),
+              value: _settings,
+              onChanged: (value) => setState(() {
+                _settings = value;
+              }),
+            ),
+            const Divider(height: 2.0),
+            SwitchListTile(
+              activeColor: Colors.indigo.shade400,
+              title: const Text('Show animator'),
+              subtitle: const Text('Animated line scrolling in the scan area'),
+              value: _settings,
+              onChanged: (value) => setState(() {
+                _settings = value;
               }),
             ),
             InkWell(
