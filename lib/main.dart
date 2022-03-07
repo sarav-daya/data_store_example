@@ -4,8 +4,10 @@
 // import 'package:data_store_example/pages/stack_positioned.dart';
 // import 'package:google_fonts/google_fonts.dart';
 // import 'package:data_store_example/pages/sliver_home.dart';
+// import 'package:data_store_example/pages/show_model_page.dart';
+// import 'package:data_store_example/pages/save_to_file.dart';
 import 'package:data_store_example/constants.dart';
-import 'package:data_store_example/pages/show_model_page.dart';
+import 'package:data_store_example/pages/loading_page.dart';
 import 'package:data_store_example/pages/sliver_page.dart';
 import 'package:data_store_example/providers/settings.dart';
 import 'package:flutter/material.dart';
@@ -50,7 +52,9 @@ class MyApp extends StatelessWidget {
                 ? ThemeMode.dark
                 : ThemeMode.light,
             scrollBehavior: const ConstantScrollBehavior(),
-            home: const ShowBottomPage(),
+            home: LoadingPage(
+              title: 'Loading Page',
+            ),
           );
         },
       ),
