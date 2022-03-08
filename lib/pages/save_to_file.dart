@@ -23,7 +23,7 @@ class _SaveToFilePageState extends State<SaveToFilePage> {
   Future<Uint8List> _capturePng() async {
     RenderRepaintBoundary boundary =
         _globalKey.currentContext!.findRenderObject() as RenderRepaintBoundary;
-    ui.Image image = await boundary.toImage();
+    ui.Image image = await boundary.toImage(pixelRatio: 5.0);
     ByteData? byteData = await image.toByteData(format: ui.ImageByteFormat.png);
     Uint8List pngBytes = byteData!.buffer.asUint8List();
 
@@ -32,7 +32,7 @@ class _SaveToFilePageState extends State<SaveToFilePage> {
     print("local file full path ${fullPath}");
     File file = File(fullPath);
     await file.writeAsBytes(pngBytes);
-    print(file.path);
+    // print(file.path);
 
     bool _permission =
         await SuperEasyPermissions.isGranted(Permissions.storage);
@@ -43,7 +43,9 @@ class _SaveToFilePageState extends State<SaveToFilePage> {
         file.path,
       );
       print(res);
-      print(file.path);
+
+      // print(file.path);
+      file.delete();
       //print(result);
     } else {
       bool _p = await SuperEasyPermissions.askPermission(Permissions.storage);
@@ -118,7 +120,15 @@ class _SaveToFilePageState extends State<SaveToFilePage> {
               SizedBox(
                 height: 20.0,
               ),
-              bytes.length > 0 ? Image.memory(bytes) : Container(),
+              bytes.length > 0
+                  ? Container(
+                      height: 200,
+                      width: 200,
+                      child: FittedBox(
+                        child: Image.memory(bytes),
+                      ),
+                    )
+                  : Container(),
             ],
           ),
         ),

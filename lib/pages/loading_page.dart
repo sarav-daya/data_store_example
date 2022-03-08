@@ -26,6 +26,30 @@ class _LoadingPageState extends State<LoadingPage> {
     setState(() {
       _counter++;
     });
+    LoadingScreen().show(
+      context: context,
+      text: 'Almost there',
+    );
+    await Future.delayed(const Duration(seconds: 2));
+    setState(() {
+      _counter++;
+    });
+    LoadingScreen().show(
+      context: context,
+      text: 'Few more seconds...',
+    );
+    await Future.delayed(const Duration(seconds: 2));
+    setState(() {
+      _counter++;
+    });
+    LoadingScreen().show(
+      context: context,
+      text: 'There you go....',
+    );
+    await Future.delayed(const Duration(seconds: 2));
+    setState(() {
+      _counter++;
+    });
 
     // Call LoadingScreen().hide() to HIDE  Loading Dialog
     LoadingScreen().hide();
@@ -39,14 +63,17 @@ class _LoadingPageState extends State<LoadingPage> {
       ),
       body: Center(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(
               'You have pushed the button this many times:',
+              textAlign: TextAlign.center,
             ),
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.headline4,
+              textAlign: TextAlign.center,
             ),
           ],
         ),
