@@ -12,10 +12,12 @@ import 'package:data_store_example/pages/sliver_background.dart';
 import 'package:data_store_example/pages/sliver_home.dart';
 import 'package:data_store_example/pages/stack_positioned.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 import '../utils.dart';
 import 'fluttring_rating_bar_page.dart';
 import 'home_page.dart';
+import 'lottie_animation_page.dart';
 import 'show_model_page.dart';
 
 class StartPage extends StatefulWidget {
@@ -31,6 +33,16 @@ class _StartPageState extends State<StartPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Flutter Examples'),
+        automaticallyImplyLeading: false,
+        leading: InkWell(
+          borderRadius: BorderRadius.circular(50),
+          onTap: () {
+            print('object');
+          },
+          child: Lottie.asset(
+            'assets/animations/star3.json',
+          ),
+        ),
         actions: const [
           ThemeButton(),
         ],
@@ -105,6 +117,10 @@ class _StartPageState extends State<StartPage> {
               ListItem(
                 title: 'Hive Database Page',
                 widget: HiveContactsPage(),
+              ),
+              ListItem(
+                title: 'Lottie Animation Page',
+                widget: LottieAnimationPage(),
               ),
             ],
           ),
