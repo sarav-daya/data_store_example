@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_compass/flutter_compass.dart';
-import 'package:permission_handler/permission_handler.dart';
+import 'package:super_easy_permissions/super_easy_permissions.dart';
 import 'dart:math' as math;
 
 class FlutterCompassPage extends StatefulWidget {
@@ -133,18 +133,15 @@ class _FlutterCompassPageState extends State<FlutterCompassPage> {
           ElevatedButton(
             child: Text('Request Permissions'),
             onPressed: () {
-              Permission.locationWhenInUse.request().then((ignored) {
-                _fetchPermissionStatus();
-              });
+              SuperEasyPermissions.getPermissionResult(Permissions.location)
+                  .then((value) => _fetchPermissionStatus());
             },
           ),
           SizedBox(height: 16),
           ElevatedButton(
             child: Text('Open App Settings'),
             onPressed: () {
-              openAppSettings().then((opened) {
-                //
-              });
+              SuperEasyPermissions.askPermission(Permissions.location);
             },
           )
         ],
@@ -152,11 +149,16 @@ class _FlutterCompassPageState extends State<FlutterCompassPage> {
     );
   }
 
-  void _fetchPermissionStatus() {
-    Permission.locationWhenInUse.status.then((status) {
-      if (mounted) {
-        setState(() => _hasPermissions = status == PermissionStatus.granted);
-      }
-    });
+  void _fetchPermissionStatus() async {
+    // Permission.locationWhenInUse.status.then((status) {
+    //   if (mounted) {
+    //     setState(() => _hasPermissions = status == PermissionStatus.granted);
+    //   }
+    // });
+    var result =
+        await SuperEasyPermissions.getPermissionResult(Permissions.location);
+    if (result == 1) {
+      setState(() => _hasPermissions = true);
+    }
   }
 }

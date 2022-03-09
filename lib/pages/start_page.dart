@@ -1,4 +1,5 @@
 import 'package:data_store_example/pages/android_platform_code.dart';
+import 'package:data_store_example/pages/compass_page.dart';
 import 'package:data_store_example/pages/gradient_appbar.dart';
 import 'package:data_store_example/pages/history_page.dart';
 import 'package:data_store_example/pages/hive_contacts.dart';
@@ -121,6 +122,10 @@ class _StartPageState extends State<StartPage> {
               ListItem(
                 title: 'Lottie Animation Page',
                 widget: LottieAnimationPage(),
+              ),
+              ListItem(
+                title: 'Compass Application',
+                widget: FlutterCompassPage(),
               ),
             ],
           ),
