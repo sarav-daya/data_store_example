@@ -51,6 +51,13 @@ class _LottieAnimationPageState extends State<LottieAnimationPage> {
                 'https://assets1.lottiefiles.com/packages/lf20_8elcqxrg.json',
               ),
             ),
+            Container(
+              height: 200,
+              width: 200,
+              child: Lottie.asset(
+                'scan.json',
+              ),
+            ),
           ],
         ),
       ),
