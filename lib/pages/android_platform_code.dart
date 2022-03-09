@@ -13,6 +13,7 @@ class AndroidPlatformPage extends StatefulWidget {
 }
 
 class _AndroidPlatformPageState extends State<AndroidPlatformPage> {
+  late StreamSubscription _subscription;
   MethodChannel channel = MethodChannel('com.auguryapps.toast');
   List<double> sensorValues = [0, 0, 0];
 
@@ -20,12 +21,18 @@ class _AndroidPlatformPageState extends State<AndroidPlatformPage> {
   void initState() {
     super.initState();
     WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
-      eventData!.listen((event) {
+      _subscription = eventData!.listen((event) {
         setState(() {
           sensorValues = <double>[event.x, event.y, event.z];
         });
       });
     });
+  }
+
+  @override
+  void dispose() {
+    _subscription.cancel();
+    super.dispose();
   }
 
   @override

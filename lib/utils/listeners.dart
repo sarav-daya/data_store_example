@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/services.dart';
 
 const EventChannel eventChannel = EventChannel("com.auguryapps.magnet");
@@ -26,3 +28,5 @@ Stream<EventChannelData>? get eventData {
   }
   return _magneticEvent;
 }
+
+disposeEvent() {}

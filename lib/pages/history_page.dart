@@ -27,119 +27,124 @@ class _HistoryPageState extends State<HistoryPage>
     _controller.forward();
     return FadeTransition(
       opacity: _animation,
-      child: CustomScrollView(
-        slivers: [
-          SliverAppBar(
-            elevation: 1,
-            pinned: true,
-            expandedHeight: kExpandedHeight,
-            backgroundColor: Colors.white,
-            actions: [
-              IconButton(
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const SettingsPage())).then(
-                    (value) => setState(() {}),
-                  );
-                },
-                icon: Icon(Icons.settings, color: Colors.indigo.shade400),
-              )
-            ],
-            flexibleSpace: FlexibleSpaceBar(
-              collapseMode: CollapseMode.parallax,
-              stretchModes: const [
-                StretchMode.fadeTitle,
-                StretchMode.blurBackground,
-                StretchMode.zoomBackground,
+      child: Scaffold(
+        body: CustomScrollView(
+          slivers: [
+            SliverAppBar(
+              automaticallyImplyLeading: false,
+              elevation: 1,
+              pinned: true,
+              expandedHeight: kExpandedHeight,
+              backgroundColor: Colors.white,
+              actions: [
+                IconButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const SettingsPage())).then(
+                      (value) => setState(() {}),
+                    );
+                  },
+                  icon: Icon(Icons.settings, color: Colors.indigo.shade400),
+                )
               ],
-              expandedTitleScale: 1.3,
-              centerTitle: false,
-              title: Text(
-                'History',
-                style: TextStyle(
-                  fontSize: 18,
-                  color: Colors.indigo.shade400,
-                  fontWeight: FontWeight.bold,
+              flexibleSpace: FlexibleSpaceBar(
+                collapseMode: CollapseMode.parallax,
+                stretchModes: const [
+                  StretchMode.fadeTitle,
+                  StretchMode.blurBackground,
+                  StretchMode.zoomBackground,
+                ],
+                expandedTitleScale: 1.3,
+                centerTitle: false,
+                title: Text(
+                  'History',
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: Colors.indigo.shade400,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-              ),
-              titlePadding:
-                  const EdgeInsets.symmetric(vertical: 16.0, horizontal: 15.0),
-              background: const DecoratedBox(
-                position: DecorationPosition.foreground,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    alignment: Alignment.bottomRight,
-                    opacity: 0.6,
-                    image: AssetImage(
-                      'assets/images/undraw_Bibliophile_re_xarc.png',
+                titlePadding: const EdgeInsets.symmetric(
+                    vertical: 16.0, horizontal: 15.0),
+                background: const DecoratedBox(
+                  position: DecorationPosition.foreground,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      alignment: Alignment.bottomRight,
+                      opacity: 0.6,
+                      image: AssetImage(
+                        'assets/images/undraw_Bibliophile_re_xarc.png',
+                      ),
                     ),
                   ),
                 ),
               ),
             ),
-          ),
-          SliverList(
-            delegate: SliverChildBuilderDelegate(
-              (context, index) {
-                return InkWell(
-                  onTap: () {
-                    // ignore: avoid_print
-                    print("tapped");
-                  },
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 15, horizontal: 10),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                const Icon(Icons.link),
-                                const SizedBox(
-                                  width: 10,
-                                ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      'This is some title $index',
-                                      style: const TextStyle(
-                                          color: Colors.black, fontSize: 16.0),
-                                    ),
-                                    Text(
-                                      'This is some subtitle of $index',
-                                      style: TextStyle(
-                                          color: Colors.grey.shade800),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                            Icon(
-                              Icons.arrow_forward,
-                              color: Colors.indigo.shade400,
-                            ),
-                          ],
+            SliverList(
+              delegate: SliverChildBuilderDelegate(
+                (context, index) {
+                  return InkWell(
+                    onTap: () {
+                      // ignore: avoid_print
+                      print("tapped");
+                    },
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 15, horizontal: 10),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const Icon(Icons.link),
+                                  const SizedBox(
+                                    width: 10,
+                                  ),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'This is some title $index',
+                                        style: const TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 16.0),
+                                      ),
+                                      Text(
+                                        'This is some subtitle of $index',
+                                        style: TextStyle(
+                                            color: Colors.grey.shade800),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                              Icon(
+                                Icons.arrow_forward,
+                                color: Colors.indigo.shade400,
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                      const Divider(
-                        height: 2,
-                      )
-                    ],
-                  ),
-                );
-              },
-              childCount: 15,
-            ),
-          )
-        ],
+                        const Divider(
+                          height: 2,
+                        )
+                      ],
+                    ),
+                  );
+                },
+                childCount: 15,
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

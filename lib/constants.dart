@@ -1,1 +1,2 @@
-const String kDatabaseName = 'datastoredb';
+const String kDatabaseName = 'qrsettings';
+const String contactsBoxName = "contacts";
