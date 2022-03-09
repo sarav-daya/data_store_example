@@ -55,7 +55,7 @@ class _LottieAnimationPageState extends State<LottieAnimationPage> {
               height: 200,
               width: 200,
               child: Lottie.asset(
-                'scan.json',
+                'assets/animations/scan.json',
               ),
             ),
           ],
