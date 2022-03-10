@@ -4,6 +4,7 @@ import 'package:data_store_example/pages/gradient_appbar.dart';
 import 'package:data_store_example/pages/history_page.dart';
 import 'package:data_store_example/pages/hive_contacts.dart';
 import 'package:data_store_example/pages/loading_page.dart';
+import 'package:data_store_example/pages/pdf_generator.dart';
 import 'package:data_store_example/pages/rating_dialog_page.dart';
 import 'package:data_store_example/pages/rating_page.dart';
 import 'package:data_store_example/pages/regular_appbar.dart';
@@ -16,6 +17,7 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
 import '../utils.dart';
+import 'detail_folder_page.dart';
 import 'fluttring_rating_bar_page.dart';
 import 'home_page.dart';
 import 'lottie_animation_page.dart';
@@ -48,97 +50,103 @@ class _StartPageState extends State<StartPage> {
           ThemeButton(),
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.only(top: 10.0),
-        child: Center(
-          child: ListView(
-            children: [
-              ListItem(
-                title: 'Gradient Appbar',
-                widget: GradientAppScreen(),
-              ),
-              ListItem(
-                title: 'History Page',
-                widget: HistoryPage(),
-              ),
-              ListItem(
-                title: 'Home Page',
-                widget: HomePage(),
-              ),
-              ListItem(
+      body: Center(
+        child: ListView(
+          reverse: true,
+          children: [
+            ExampleItemTile(
+              title: 'Gradient Appbar',
+              widget: GradientAppScreen(),
+            ),
+            ExampleItemTile(
+              title: 'History Page',
+              widget: HistoryPage(),
+            ),
+            ExampleItemTile(
+              title: 'Home Page',
+              widget: HomePage(),
+            ),
+            ExampleItemTile(
+              title: 'Loading Page',
+              widget: LoadingPage(
                 title: 'Loading Page',
-                widget: LoadingPage(
-                  title: 'Loading Page',
-                ),
               ),
-              ListItem(
-                title: 'Sliver background',
-                widget: SliverBackgroundPage(),
-              ),
-              ListItem(
-                title: 'Stacked Positioned',
-                widget: StackPositionedPage(),
-              ),
-              ListItem(
-                title: 'Sliver Page',
-                widget: SliverHomePage(),
-              ),
-              ListItem(
-                title: 'Show Modal Page',
-                widget: ShowBottomPage(),
-              ),
-              ListItem(
-                title: 'Settings Page',
-                widget: SettingsPage(),
-              ),
-              ListItem(
-                title: 'SaveFile Page',
-                widget: SaveToFilePage(),
-              ),
-              ListItem(
-                title: 'Regular Appbar Page',
-                widget: RegularAppbarScreen(),
-              ),
-              ListItem(
-                title: 'AndroidPlatform Code Page',
-                widget: AndroidPlatformPage(),
-              ),
-              ListItem(
-                title: 'Rating Page',
-                widget: RatingPage(),
-              ),
-              ListItem(
-                title: 'Rating Dialog Page',
-                widget: RatingDialogPage(),
-              ),
-              ListItem(
-                title: 'Flutting Rating Bar Page',
-                widget: FlutterRatingBarPage(),
-              ),
-              ListItem(
-                title: 'Hive Database Page',
-                widget: HiveContactsPage(),
-              ),
-              ListItem(
-                title: 'Lottie Animation Page',
-                widget: LottieAnimationPage(),
-              ),
-              ListItem(
-                title: 'Compass Application',
-                widget: FlutterCompassPage(),
-              ),
-            ],
-          ),
+            ),
+            ExampleItemTile(
+              title: 'Sliver background',
+              widget: SliverBackgroundPage(),
+            ),
+            ExampleItemTile(
+              title: 'Stacked Positioned',
+              widget: StackPositionedPage(),
+            ),
+            ExampleItemTile(
+              title: 'Sliver Page',
+              widget: SliverHomePage(),
+            ),
+            ExampleItemTile(
+              title: 'Show Modal Page',
+              widget: ShowBottomPage(),
+            ),
+            ExampleItemTile(
+              title: 'Settings Page',
+              widget: SettingsPage(),
+            ),
+            ExampleItemTile(
+              title: 'SaveFile Page',
+              widget: SaveToFilePage(),
+            ),
+            ExampleItemTile(
+              title: 'Regular Appbar Page',
+              widget: RegularAppbarScreen(),
+            ),
+            ExampleItemTile(
+              title: 'AndroidPlatform Code Page',
+              widget: AndroidPlatformPage(),
+            ),
+            ExampleItemTile(
+              title: 'Rating Page',
+              widget: RatingPage(),
+            ),
+            ExampleItemTile(
+              title: 'Rating Dialog Page',
+              widget: RatingDialogPage(),
+            ),
+            ExampleItemTile(
+              title: 'Flutting Rating Bar Page',
+              widget: FlutterRatingBarPage(),
+            ),
+            ExampleItemTile(
+              title: 'Hive Database Page',
+              widget: HiveContactsPage(),
+            ),
+            ExampleItemTile(
+              title: 'Lottie Animation Page',
+              widget: LottieAnimationPage(),
+            ),
+            ExampleItemTile(
+              title: 'Compass Application',
+              widget: FlutterCompassPage(),
+            ),
+            ExampleItemTile(
+              title: 'Flutter PDF Generator',
+              widget: PDFGeneratorPage(),
+            ),
+            ExampleItemTile(
+              title: 'Details Folder Page',
+              widget: DetailsFolderPage(),
+            ),
+          ],
         ),
       ),
     );
   }
 }
 
-class ListItem extends StatelessWidget {
+class ExampleItemTile extends StatelessWidget {
   final Widget widget;
   final String title;
-  const ListItem({
+  const ExampleItemTile({
     Key? key,
     required this.title,
     required this.widget,
@@ -146,13 +154,21 @@ class ListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 30),
-      child: ElevatedButton(
-        onPressed: () => Navigator.push(
-            context, MaterialPageRoute(builder: (context) => widget)),
-        child: Text(title),
-      ),
+    return Column(
+      children: [
+        ListTile(
+          leading: Icon(Icons.phone_android_outlined),
+          trailing: Icon(Icons.arrow_forward_sharp),
+          onTap: (() {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => widget));
+          }),
+          title: Text(title),
+        ),
+        Divider(
+          height: 2,
+        )
+      ],
     );
   }
 }

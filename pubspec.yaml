@@ -46,6 +46,7 @@ dependencies:
   rating_dialog: ^2.0.3
   lottie: ^1.2.2
   flutter_compass: ^0.7.0
+  pdf: ^3.7.1
 
 dev_dependencies:
   flutter_test:

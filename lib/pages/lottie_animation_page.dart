@@ -17,45 +17,87 @@ class _LottieAnimationPageState extends State<LottieAnimationPage> {
         child: ListView(
           children: [
             Container(
-              height: 200,
-              width: 200,
+              color: Colors.red.shade100,
+              height: 100,
+              width: 100,
               child: Lottie.asset(
                 'assets/animations/star1.json',
               ),
             ),
             Container(
-              height: 200,
-              width: 200,
+              color: Colors.grey.shade300,
+              height: 100,
+              width: 100,
               child: Lottie.asset(
                 'assets/animations/star2.json',
               ),
             ),
             Container(
-              height: 200,
-              width: 200,
+              color: Colors.red.shade100,
+              height: 100,
+              width: 100,
               child: Lottie.asset(
                 'assets/animations/star3.json',
               ),
             ),
             Container(
-              height: 200,
-              width: 200,
+              color: Colors.grey.shade300,
+              height: 100,
+              width: 100,
               child: Lottie.network(
                 'https://assets1.lottiefiles.com/packages/lf20_cnrpe4f9.json',
               ),
             ),
             Container(
-              height: 200,
-              width: 200,
+              color: Colors.red.shade100,
+              height: 100,
+              width: 100,
               child: Lottie.network(
                 'https://assets1.lottiefiles.com/packages/lf20_8elcqxrg.json',
               ),
             ),
             Container(
-              height: 200,
-              width: 200,
+              color: Colors.grey.shade300,
+              height: 100,
+              width: 100,
               child: Lottie.asset(
                 'assets/animations/scan.json',
+              ),
+            ),
+            Container(
+              color: Colors.red.shade100,
+              height: 100,
+              width: 100,
+              child: Lottie.asset(
+                'assets/animations/scan1.json',
+              ),
+            ),
+            Container(
+              color: Colors.grey.shade300,
+              height: 100,
+              width: 100,
+              child: Lottie.asset(
+                'assets/animations/scan2.json',
+              ),
+            ),
+            Container(
+              height: 100,
+              width: 100,
+              color: Colors.red.shade100,
+              child: Lottie.asset('assets/animations/scan3.json',
+                  fit: BoxFit.contain),
+            ),
+            Container(
+              color: Colors.grey.shade300,
+              child: Lottie.asset(
+                'assets/animations/scan4.json',
+              ),
+            ),
+            Container(
+              height: 100,
+              width: 100,
+              child: Lottie.network(
+                'https://assets1.lottiefiles.com/packages/lf20_tazts8oq.json',
               ),
             ),
           ],

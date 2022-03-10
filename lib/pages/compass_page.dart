@@ -116,7 +116,7 @@ class _FlutterCompassPageState extends State<FlutterCompassPage> {
             ),
             child: Transform.rotate(
               angle: (direction * (math.pi / 180) * -1),
-              child: Image.asset('assets/compass.jpg'),
+              child: Image.asset('assets/images/compass.jpg'),
             ),
           ),
         );
