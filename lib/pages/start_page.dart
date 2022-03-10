@@ -5,6 +5,7 @@ import 'package:data_store_example/pages/history_page.dart';
 import 'package:data_store_example/pages/hive_contacts.dart';
 import 'package:data_store_example/pages/loading_page.dart';
 import 'package:data_store_example/pages/pdf_generator.dart';
+import 'package:data_store_example/pages/pdf_invoice_page.dart';
 import 'package:data_store_example/pages/rating_dialog_page.dart';
 import 'package:data_store_example/pages/rating_page.dart';
 import 'package:data_store_example/pages/regular_appbar.dart';
@@ -135,6 +136,10 @@ class _StartPageState extends State<StartPage> {
             ExampleItemTile(
               title: 'Details Folder Page',
               widget: DetailsFolderPage(),
+            ),
+            ExampleItemTile(
+              title: 'Invoice Generator',
+              widget: PdfInvoicePage(),
             ),
           ],
         ),

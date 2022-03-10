@@ -74,8 +74,7 @@ class _DetailsFolderPageState extends State<DetailsFolderPage> {
             },
           ),
           actions: <Widget>[
-            FlatButton(
-              color: Colors.blue,
+            ElevatedButton(
               child: Text(
                 'Add',
                 style: TextStyle(color: Colors.white),
@@ -90,8 +89,7 @@ class _DetailsFolderPageState extends State<DetailsFolderPage> {
                 Navigator.of(context).pop();
               },
             ),
-            FlatButton(
-              color: Colors.redAccent,
+            ElevatedButton(
               child: Text(
                 'No',
                 style: TextStyle(color: Colors.white),

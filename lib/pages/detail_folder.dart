@@ -120,6 +120,7 @@ class InnerFolderState extends State<InnerFolder> {
 
     final myDir = new Directory(fileStr);
 
+    // ignore: unused_local_variable
     var _folders_list = myDir.listSync(recursive: true, followLinks: false);
 
     setState(() {
@@ -138,7 +139,7 @@ class InnerFolderState extends State<InnerFolder> {
             'Are you sure to delete this folder?',
           ),
           actions: <Widget>[
-            FlatButton(
+            ElevatedButton(
               child: Text('Yes'),
               onPressed: () async {
                 await _folders[index].delete();
@@ -146,7 +147,7 @@ class InnerFolderState extends State<InnerFolder> {
                 Navigator.of(context).pop();
               },
             ),
-            FlatButton(
+            ElevatedButton(
               child: Text('No'),
               onPressed: () {
                 Navigator.of(context).pop();
@@ -225,6 +226,7 @@ class InnerFolderState extends State<InnerFolder> {
                                         k < _folders_list.length;
                                         k++) {
                                       var config = File(_folders_list[k].path);
+                                      // ignore: unnecessary_type_check
                                       print("IsFile ${config is File}");
                                     }
                                     print(_folders_list);
