@@ -105,8 +105,8 @@ class _PdfInvoicePageState extends State<PdfInvoicePage> {
             ),
             ElevatedButton(
               onPressed: () async {
-                Uint8List bytes = await service.createHelloWorld();
-                await service.savePdfFile('example', bytes);
+                Uint8List bytes = await service.createInvoice(products);
+                service.savePdfFile('example', bytes);
               },
               child: const Text("Create Invoice"),
             ),

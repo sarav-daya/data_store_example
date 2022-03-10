@@ -48,6 +48,7 @@ dependencies:
   flutter_compass: ^0.7.0
   pdf: ^3.7.1
   open_document: ^1.0.4
+  loader_overlay: ^2.0.5+1
 
 dev_dependencies:
   flutter_test:
