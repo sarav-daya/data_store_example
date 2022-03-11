@@ -37,7 +37,7 @@ class InnerFolderState extends State<InnerFolder> {
   callFolderCreationMethod(String folderInAppDocDir) async {
     // ignore: unused_local_variable
     String actualFileName = await createFolderInAppDocDir(folderInAppDocDir);
-    print(actualFileName);
+    // print(actualFileName);
     setState(() {});
   }
 
@@ -73,7 +73,7 @@ class InnerFolderState extends State<InnerFolder> {
                 onChanged: (val) {
                   setState(() {
                     nameOfFolder = folderController.text;
-                    print(nameOfFolder);
+                    // print(nameOfFolder);
                   });
                 },
               );
@@ -126,7 +126,7 @@ class InnerFolderState extends State<InnerFolder> {
     setState(() {
       _folders = myDir.listSync(recursive: true, followLinks: false);
     });
-    print(_folders);
+    // print(_folders);
   }
 
   Future<void> _showDeleteDialog(int index) async {
@@ -205,7 +205,7 @@ class InnerFolderState extends State<InnerFolder> {
                           builder: (ctx, snapshot) {
                             if (snapshot.hasData) {
                               FileStat f = snapshot.data as FileStat;
-                              print("file.stat() ${f.type}");
+                              // print("file.stat() ${f.type}");
                               ;
                               if (f.type.toString().contains("file")) {
                                 return Icon(
@@ -225,11 +225,11 @@ class InnerFolderState extends State<InnerFolder> {
                                     for (int k = 0;
                                         k < _folders_list.length;
                                         k++) {
-                                      var config = File(_folders_list[k].path);
+                                      // var config = File(_folders_list[k].path);
                                       // ignore: unnecessary_type_check
-                                      print("IsFile ${config is File}");
+                                      //print("IsFile ${config is File}");
                                     }
-                                    print(_folders_list);
+                                    //print(_folders_list);
                                   },
                                   child: Icon(
                                     Icons.folder,

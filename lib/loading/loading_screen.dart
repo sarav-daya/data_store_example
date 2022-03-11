@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'package:data_store_example/loading/loading_screen_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:loading_animation_widget/loading_animation_widget.dart';
-import 'package:lottie/lottie.dart';
+// import 'package:loading_animation_widget/loading_animation_widget.dart';
+// import 'package:lottie/lottie.dart';
 
 class LoadingScreen {
   factory LoadingScreen() => _shared;
@@ -12,10 +12,7 @@ class LoadingScreen {
 
   LoadingScreenController? controller;
 
-  void show({
-    required BuildContext context,
-    required String text,
-  }) {
+  void show({required BuildContext context, required String text}) {
     if (controller?.update(text) ?? false) {
       return;
     } else {

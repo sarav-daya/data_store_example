@@ -49,9 +49,8 @@ class _AndroidPlatformPageState extends State<AndroidPlatformPage> {
             SizedBox(height: 20.0),
             ElevatedButton(
               onPressed: () async {
-                bool res = await channel
-                    .invokeMethod('showToast', {"message": "New Message"});
-                print(res);
+                await channel.invokeMethod('showToast',
+                    {"message": "This is my message....", "isshort": true});
               },
               child: Text('Show'),
             ),

@@ -35,9 +35,11 @@ class MainActivity : FlutterActivity(), SensorEventListener, EventChannel.Stream
             channelName
         ).setMethodCallHandler { call, result ->
             var msg: String? = ""
+            var isshort: Boolean? = false
             if (call.method == "showToast") {
                 msg = call.argument<String>("message")
-                showToast(message = msg!!)
+                isshort = call.argument<Boolean>("isshort")
+                showToast(message = msg!!, isshort!!)
                 result.success(true)
             } else {
                 result.notImplemented()
@@ -45,8 +47,13 @@ class MainActivity : FlutterActivity(), SensorEventListener, EventChannel.Stream
         }
     }
 
-    private fun showToast(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+    private fun showToast(message: String, isshort: Boolean) {
+        if (isshort){
+            Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+        } else {
+            Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+        }
+
     }
 
     override fun onSensorChanged(event: SensorEvent?) {

@@ -32,7 +32,7 @@ class _DetailsFolderPageState extends State<DetailsFolderPage> {
   callFolderCreationMethod(String folderInAppDocDir) async {
     // ignore: unused_local_variable
     String actualFileName = await createFolderInAppDocDir(folderInAppDocDir);
-    print(actualFileName);
+    // print(actualFileName);
     setState(() {});
   }
 
@@ -67,7 +67,7 @@ class _DetailsFolderPageState extends State<DetailsFolderPage> {
                 onChanged: (val) {
                   setState(() {
                     nameOfFolder = folderController.text;
-                    print(nameOfFolder);
+                    // print(nameOfFolder);
                   });
                 },
               );
@@ -114,7 +114,7 @@ class _DetailsFolderPageState extends State<DetailsFolderPage> {
     setState(() {
       _folders = myDir.listSync(recursive: true, followLinks: false);
     });
-    print(_folders);
+    // print(_folders);
   }
 
   Future<void> _showDeleteDialog(int index) async {
@@ -194,7 +194,7 @@ class _DetailsFolderPageState extends State<DetailsFolderPage> {
                           builder: (ctx, snapshot) {
                             if (snapshot.hasData) {
                               FileStat f = snapshot.data as FileStat;
-                              print("file.stat() ${f.type}");
+                              // print("file.stat() ${f.type}");
                               ;
                               if (f.type.toString().contains("file")) {
                                 return Icon(

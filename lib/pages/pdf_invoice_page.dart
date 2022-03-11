@@ -4,6 +4,7 @@ import 'package:data_store_example/services/pdf_invoice_service.dart';
 import 'package:flutter/material.dart';
 
 import '../models/product.dart';
+import '../utils/helper.dart';
 
 class PdfInvoicePage extends StatefulWidget {
   const PdfInvoicePage({Key? key}) : super(key: key);
@@ -14,6 +15,7 @@ class PdfInvoicePage extends StatefulWidget {
 
 class _PdfInvoicePageState extends State<PdfInvoicePage> {
   final PdfInvoiceService service = PdfInvoiceService();
+  bool _isWorking = false;
 
   List<Product> products = [
     Product(name: "Membership", price: 99.99, vatInPercent: 19),
@@ -24,94 +26,113 @@ class _PdfInvoicePageState extends State<PdfInvoicePage> {
 
   int number = 0;
 
+  // _setWorking(value) {
+  //   setState(() {
+  //     _isWorking = value;
+  //   });
+  // }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Invoice Generator'),
       ),
-      body: Padding(
-        padding: EdgeInsets.all(8.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Expanded(
-              child: ListView.builder(
-                itemBuilder: (context, index) {
-                  final currentProduct = products[index];
-                  return Row(
-                    children: [
-                      Expanded(
-                        child: Text(currentProduct.name),
-                        flex: 3,
-                      ),
-                      Expanded(
-                        flex: 3,
-                        child: Column(
+      body: Stack(
+        children: [
+          Visibility(
+            child: LinearProgressIndicator(),
+            visible: _isWorking,
+          ),
+          AbsorbPointer(
+            absorbing: _isWorking,
+            child: Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: ListView.builder(
+                      itemBuilder: (context, index) {
+                        final currentProduct = products[index];
+                        return Row(
                           children: [
-                            Text(
-                                "Price: ${currentProduct.price.toStringAsFixed(2)} \$"),
-                            Text(
-                                "VAT: ${currentProduct.vatInPercent.toStringAsFixed(0)} %"),
-                          ],
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                        ),
-                      ),
-                      Expanded(
-                        child: Row(
-                          children: [
+                            Expanded(
+                              child: Text(currentProduct.name),
+                              flex: 3,
+                            ),
+                            Expanded(
+                              flex: 3,
+                              child: Column(
+                                children: [
+                                  Text(
+                                      "Price: ${currentProduct.price.toStringAsFixed(2)} \$"),
+                                  Text(
+                                      "VAT: ${currentProduct.vatInPercent.toStringAsFixed(0)} %"),
+                                ],
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                              ),
+                            ),
+                            Expanded(
+                              child: Row(
+                                children: [
+                                  Expanded(
+                                    child: IconButton(
+                                      onPressed: () => setState(
+                                          () => currentProduct.amount++),
+                                      icon: const Icon(Icons.add),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Expanded(
+                              child: Text(
+                                currentProduct.amount.toString(),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
                             Expanded(
                               child: IconButton(
                                 onPressed: () =>
-                                    setState(() => currentProduct.amount++),
-                                icon: const Icon(Icons.add),
+                                    setState(() => currentProduct.amount--),
+                                icon: const Icon(Icons.remove),
                               ),
                             ),
                           ],
-                        ),
-                      ),
-                      Expanded(
-                        child: Text(
-                          currentProduct.amount.toString(),
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                      Expanded(
-                        child: IconButton(
-                          onPressed: () =>
-                              setState(() => currentProduct.amount--),
-                          icon: const Icon(Icons.remove),
-                        ),
-                      ),
+                        );
+                      },
+                      itemCount: products.length,
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text('VAR'),
+                      Text("${getVat()} \$"),
                     ],
-                  );
-                },
-                itemCount: products.length,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text('Total'),
+                      Text("${getTotal()} \$"),
+                    ],
+                  ),
+                  ElevatedButton(
+                    onPressed: () async {
+                      SnackbarHelper().showSnackbar(
+                          message: "Opening document..", isshort: true);
+                      Uint8List bytes = await service.createInvoice(products);
+                      service.savePdfFile('example', bytes);
+                    },
+                    child: const Text("Create Invoice"),
+                  ),
+                ],
               ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text('VAR'),
-                Text("${getVat()} \$"),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text('Total'),
-                Text("${getTotal()} \$"),
-              ],
-            ),
-            ElevatedButton(
-              onPressed: () async {
-                Uint8List bytes = await service.createInvoice(products);
-                service.savePdfFile('example', bytes);
-              },
-              child: const Text("Create Invoice"),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
