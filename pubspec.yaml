@@ -49,6 +49,7 @@ dependencies:
   pdf: ^3.7.1
   open_document: ^1.0.4
   loader_overlay: ^2.0.5+1
+  loading_animation_widget: ^1.1.0+3
 
 dev_dependencies:
   flutter_test:

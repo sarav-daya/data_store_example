@@ -3,6 +3,7 @@ import 'package:data_store_example/pages/compass_page.dart';
 import 'package:data_store_example/pages/gradient_appbar.dart';
 import 'package:data_store_example/pages/history_page.dart';
 import 'package:data_store_example/pages/hive_contacts.dart';
+import 'package:data_store_example/pages/loading_inpage.dart';
 import 'package:data_store_example/pages/loading_page.dart';
 import 'package:data_store_example/pages/pdf_generator.dart';
 import 'package:data_store_example/pages/pdf_invoice_page.dart';
@@ -141,7 +142,11 @@ class _StartPageState extends State<StartPage> {
               title: 'Invoice Generator',
               widget: PdfInvoicePage(),
             ),
-          ],
+            ExampleItemTile(
+              title: 'Loading In Page',
+              widget: LoadinInPage(),
+            ),
+          ].reversed.toList(),
         ),
       ),
     );

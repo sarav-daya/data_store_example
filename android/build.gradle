@@ -3,11 +3,10 @@ buildscript {
     repositories {
         google()
         mavenCentral()
-  
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.1.2'
+        classpath 'com.android.tools.build:gradle:4.1.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
@@ -16,7 +15,6 @@ allprojects {
     repositories {
         google()
         mavenCentral()
-
     }
 }
 
@@ -31,4 +29,3 @@ subprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
-

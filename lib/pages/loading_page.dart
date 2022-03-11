@@ -31,25 +31,6 @@ class _LoadingPageState extends State<LoadingPage> {
       text: 'Almost there',
     );
     await Future.delayed(const Duration(seconds: 2));
-    setState(() {
-      _counter++;
-    });
-    LoadingScreen().show(
-      context: context,
-      text: 'Few more seconds...',
-    );
-    await Future.delayed(const Duration(seconds: 2));
-    setState(() {
-      _counter++;
-    });
-    LoadingScreen().show(
-      context: context,
-      text: 'There you go....',
-    );
-    await Future.delayed(const Duration(seconds: 2));
-    setState(() {
-      _counter++;
-    });
 
     // Call LoadingScreen().hide() to HIDE  Loading Dialog
     LoadingScreen().hide();

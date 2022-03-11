@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'package:data_store_example/loading/loading_screen_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:lottie/lottie.dart';
 
 class LoadingScreen {
   factory LoadingScreen() => _shared;
@@ -47,30 +49,37 @@ class LoadingScreen {
           child: Center(
             child: Container(
               constraints: BoxConstraints(
-                maxWidth: size.width * 0.6,
-                maxHeight: size.height * 0.8,
-                minWidth: size.width * 0.6,
+                maxWidth: size.width * 0.8,
+                maxHeight: size.width * 0.6,
               ),
               decoration: BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.circular(10.0),
+                  borderRadius: BorderRadius.circular(
+                    10.0,
+                  ),
                   boxShadow: [
                     BoxShadow(
                       color: Colors.grey.shade800,
-                      blurRadius: 20,
-                      spreadRadius: 0.1,
+                      blurRadius: 10,
+                      spreadRadius: 0.04,
                     )
                   ]),
               child: Padding(
-                padding: const EdgeInsets.all(16.0),
+                padding: EdgeInsets.symmetric(vertical: 30, horizontal: 20),
                 child: SingleChildScrollView(
-                  child: Column(
+                  child: Row(
                     mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const SizedBox(height: 10),
-                      CircularProgressIndicator(color: Colors.purple.shade500),
-                      const SizedBox(height: 20),
+                      SizedBox(
+                        width: 25,
+                        height: 25,
+                        child: CircularProgressIndicator(
+                          color: Colors.black,
+                          strokeWidth: 3,
+                        ),
+                      ),
+                      const SizedBox(width: 10),
                       StreamBuilder(
                         stream: _text.stream,
                         builder: (context, snapshot) {
