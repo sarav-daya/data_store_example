@@ -5,6 +5,7 @@ import 'package:data_store_example/pages/history_page.dart';
 import 'package:data_store_example/pages/hive_contacts.dart';
 import 'package:data_store_example/pages/loading_inpage.dart';
 import 'package:data_store_example/pages/loading_page.dart';
+import 'package:data_store_example/pages/move_image.dart';
 import 'package:data_store_example/pages/pdf_generator.dart';
 import 'package:data_store_example/pages/pdf_invoice_page.dart';
 import 'package:data_store_example/pages/rating_dialog_page.dart';
@@ -145,6 +146,10 @@ class _StartPageState extends State<StartPage> {
             ExampleItemTile(
               title: 'Loading In Page',
               widget: LoadinInPage(),
+            ),
+            ExampleItemTile(
+              title: 'Loading In Page',
+              widget: MoveImagePage(title: 'Move Image Page'),
             ),
           ].reversed.toList(),
         ),
