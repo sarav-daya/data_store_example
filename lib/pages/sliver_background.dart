@@ -91,146 +91,149 @@ class CreateQR extends StatefulWidget {
   State<CreateQR> createState() => _CreateQRState();
 }
 
-class _CreateQRState extends State<CreateQR>
-    with SingleTickerProviderStateMixin {
-  late AnimationController _controller;
-  late Animation<double> _animation;
+class _CreateQRState extends State<CreateQR> {
+  //   with SingleTickerProviderStateMixin {
+  // late AnimationController _controller;
+  // late Animation<double> _animation;
   double kExpandedHeight = 200;
 
   void initState() {
     super.initState();
 
-    _controller = AnimationController(
-        vsync: this, duration: Duration(milliseconds: 1000));
-    _animation = Tween(begin: 0.0, end: 1.0).animate(_controller);
+    // _controller =
+    //     AnimationController(vsync: this, duration: Duration(milliseconds: 200));
+    // _animation = Tween(begin: 0.0, end: 1.0).animate(_controller);
   }
 
   @override
   Widget build(BuildContext context) {
-    _controller.forward();
-    return FadeTransition(
-      opacity: _animation,
-      child: CustomScrollView(
-        controller: widget._scrollController,
-        slivers: [
-          SliverAppBar(
-            elevation: 1,
-            pinned: true,
-            expandedHeight: widget.kExpandedHeight,
-            backgroundColor: Colors.white,
-            title: Opacity(
-              opacity: widget._opacity,
-            ),
-            actions: [
-              IconButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const SettingsPage(),
-                      maintainState: false,
-                    ),
-                  ).then(
-                    (value) => setState(() {}),
-                  );
-                },
-                icon: Icon(Icons.settings, color: Colors.indigo.shade400),
-              )
+    // _controller.forward();
+    // return FadeTransition(
+    //   opacity: _animation,
+    //   child:
+    return CustomScrollView(
+      controller: widget._scrollController,
+      slivers: [
+        SliverAppBar(
+          elevation: 1,
+          pinned: true,
+          expandedHeight: widget.kExpandedHeight,
+          automaticallyImplyLeading: false,
+          backgroundColor: Colors.indigo.shade100,
+          title: Opacity(
+            opacity: widget._opacity,
+          ),
+          actions: [
+            IconButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const SettingsPage(),
+                    maintainState: false,
+                  ),
+                ).then(
+                  (value) => setState(() {}),
+                );
+              },
+              icon: Icon(Icons.settings, color: Colors.indigo.shade400),
+            )
+          ],
+          flexibleSpace: FlexibleSpaceBar(
+            collapseMode: CollapseMode.parallax,
+            stretchModes: const [
+              StretchMode.fadeTitle,
+              StretchMode.blurBackground,
+              StretchMode.zoomBackground,
             ],
-            flexibleSpace: FlexibleSpaceBar(
-              collapseMode: CollapseMode.parallax,
-              stretchModes: const [
-                StretchMode.fadeTitle,
-                StretchMode.blurBackground,
-                StretchMode.zoomBackground,
-              ],
-              expandedTitleScale: 1.3,
-              centerTitle: false,
-              title: Text(
-                'Let\'s Make QR',
-                style: TextStyle(
-                  fontSize: 18,
-                  color: Colors.indigo.shade400,
-                  fontWeight: FontWeight.bold,
-                ),
+            expandedTitleScale: 1.3,
+            centerTitle: false,
+            title: Text(
+              'Let\'s Make QR',
+              style: TextStyle(
+                fontSize: 18,
+                color: Colors.indigo.shade400,
+                fontWeight: FontWeight.bold,
               ),
-              titlePadding:
-                  const EdgeInsets.symmetric(vertical: 16.0, horizontal: 15.0),
-              background: const DecoratedBox(
-                position: DecorationPosition.foreground,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    alignment: Alignment.bottomRight,
-                    opacity: 0.6,
-                    image: AssetImage(
-                      'assets/images/undraw_Add_files_re_v09g.png',
-                    ),
+            ),
+            titlePadding:
+                const EdgeInsets.symmetric(vertical: 16.0, horizontal: 15.0),
+            background: const DecoratedBox(
+              position: DecorationPosition.background,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  alignment: Alignment.center,
+                  fit: BoxFit.cover,
+                  opacity: 1.0,
+                  image: AssetImage(
+                    'assets/images/undraw_Add_files_re_v09g.png',
                   ),
                 ),
               ),
             ),
           ),
-          SliverList(
-            delegate: SliverChildBuilderDelegate(
-              (context, index) {
-                return InkWell(
-                  onTap: () {
-                    // ignore: avoid_print
-                    print("tapped");
-                  },
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 15, horizontal: 10),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                const Icon(Icons.link),
-                                const SizedBox(
-                                  width: 10,
-                                ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      'This is some title $index',
-                                      style: const TextStyle(
-                                          color: Colors.black, fontSize: 16.0),
-                                    ),
-                                    Text(
-                                      'This is some subtitle of $index',
-                                      style: TextStyle(
-                                          color: Colors.grey.shade800),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                            Icon(
-                              Icons.arrow_forward,
-                              color: Colors.indigo.shade400,
-                            ),
-                          ],
-                        ),
+        ),
+        SliverList(
+          delegate: SliverChildBuilderDelegate(
+            (context, index) {
+              return InkWell(
+                onTap: () {
+                  // ignore: avoid_print
+                  print("tapped");
+                },
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 15, horizontal: 10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Icon(Icons.link),
+                              const SizedBox(
+                                width: 10,
+                              ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'This is some title $index',
+                                    style: const TextStyle(
+                                        color: Colors.black, fontSize: 16.0),
+                                  ),
+                                  Text(
+                                    'This is some subtitle of $index',
+                                    style:
+                                        TextStyle(color: Colors.grey.shade800),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                          Icon(
+                            Icons.arrow_forward,
+                            color: Colors.indigo.shade400,
+                          ),
+                        ],
                       ),
-                      const Divider(
-                        height: 2,
-                      )
-                    ],
-                  ),
-                );
-              },
-              childCount: 15,
-            ),
-          )
-        ],
-      ),
+                    ),
+                    const Divider(
+                      height: 2,
+                    )
+                  ],
+                ),
+              );
+            },
+            childCount: 15,
+          ),
+        )
+      ],
     );
+    // );
   }
 }
